@@ -6,6 +6,9 @@
 # Redirect FS to FSDS0000 for easy modding on real PS3.
 #undef REDIRECT_FS
 
+# Make lua's print() output to stdout
+#define LUA_PRINT_TO_STDOUT
+
 .globl _start
 # Just a dummy to shut the linker up. Unused.
 _start:
@@ -77,6 +80,10 @@ target draw_dbgmenuhgdraw_box, 0x401C60
 
 #target create_debug_menu_label, 0x00407518
 target create_debug_menu_label, 0x00406F08
+
+target fs_lua_print, 0x00C02C78
+
+target luaB_print, 0xCA5230
 
 target fsds_path, 0x016BCBC0 # /dev_hdd0/game/FSDS00000/
 
@@ -338,22 +345,22 @@ patchend sfx_test_label
 
 patch2 my_fsds_path, sfx_test_label
   # /dev_hdd0/game/FSDS00000/USRDIR
-  .short '/','d','e','v','_','h','d','d','0','/','g','a','m','e','/','F','S','D','S','0','0','0','0','0','/','U','S','R','D','I','R',0,0
+  .short '/','d','e','v','_','h','d','d','0','/','g','a','m','e','/','F','S','D','S','0','0','0','0','0','/','U','S','R','D','I','R',0
 patchend my_fsds_path
 
 #ifdef REDIRECT_FS
 
-# Redirect FS requests for game://
+# Redirect FS requests for game:/
 patch game_alias, 0x01853164
   .long my_fsds_path
 patchend game_alias
 
-# Redirect FS requests for debug://
+# Redirect FS requests for debug:/
 patch debug_alias, 0x0185316C
   .long my_fsds_path
 patchend debug_alias
 
-# Redirect FS requests for capture://
+# Redirect FS requests for capture:/
 patch capture_alias, 0x01853174
   .long my_fsds_path
 patchend capture_alias
@@ -366,9 +373,17 @@ patchend sfx_test_label_pointer
 
 #ifdef REDIRECT_FS
 
-# Redirect FS requests for bdvd://
+# Redirect FS requests for bdvd:/
 patch bdvd_path, 0x019027F0
   .long my_fsds_path
 patchend bdvd_path
+
+#endif
+
+#ifdef LUA_PRINT_TO_STDOUT
+
+patch lua_print_pointer, 0x196E568
+  .long luaB_print
+patchend lua_print_pointer
 
 #endif
