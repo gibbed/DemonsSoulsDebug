@@ -18,7 +18,10 @@ Like what I've done? **[Consider supporting me on Patreon](http://patreon.com/gi
 1. Place a decrypted copy of Demon's Souls eboot.bin at `bin\boot.elf`.
     * You can get this easily by running Demon's Souls in RPCS3, it will then be found in `data\BLUS30443\(some ID)-EBOOT.BIN\boot.elf`.
 1. Run `build.bat`, if all goes well `bin\debug.elf` will be created.
-1. Replace the original `debug.elf` in the game directory and run it on a real PS3 or otherwise.
+1. Run it on a real PS3 or otherwise.
+    * Replace the original `EBOOT.BIN` with `debug.elf` in the game directory.
+        * *Will probably require turning it into a SELF for running it on a real PS3.*
+    * Or just place it alongside `EBOOT.BIN`.
 
 ## TODO
 * Build scripts for *nix.
