@@ -28,7 +28,7 @@ namespace PatchElf
 
             var options = new OptionSet()
             {
-                { "v|verify-hash", "verify ELF hash", v => verifyHash = v },
+                { "v|verify-hash=", "verify ELF hash", v => verifyHash = v },
                 { "a|add-cave", "add code cave", v => addCave = v != null },
                 { "dca|desired-cave-address", "check desired cave address", v => ParseValue(v, out desiredCaveAddress) },
                 { "dcs|desired-cave-size", "check desired cave size", v => ParseValue(v, out desiredCaveSize) },
@@ -312,14 +312,6 @@ namespace PatchElf
                 {
                     var type = (uint)program.Type;
                     var flags = (uint)program.Flags;
-
-                    Console.WriteLine(
-                        "** Segment: p_type=0x{0:x}, p_vaddr=0x{1:x}, p_filesz=0x{2:x}, p_memsz=0x{3:x}, flags=0x{4:x}",
-                        type,
-                        program.VirtualAddress,
-                        program.FileSize,
-                        program.MemorySize,
-                        flags);
 
                     sha1.TransformBlock(BitConverter.GetBytes(type.Swap()), 0, 4, null, 0);
                     sha1.TransformBlock(BitConverter.GetBytes(flags.Swap()), 0, 4, null, 0);
