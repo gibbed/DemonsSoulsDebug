@@ -2,7 +2,7 @@
 
 This is some code to patch Demon's Souls `eboot.bin` with debug functionality.
 
-Like what I've done? **[Consider supporting me on Patreon](http://patreon.com.gibbed).**
+Like what I've done? **[Consider supporting me on Patreon](http://patreon.com/gibbed).**
 
 ## What it achieves
 * Enables the title debug menu.
