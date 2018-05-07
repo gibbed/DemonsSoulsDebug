@@ -1,0 +1,8 @@
+bin/eboot.bin
+bin/*.elf
+bin/*.o
+tools/bin
+tools/*.suo
+tools/projects/*/bin
+tools/projects/*/obj
+tools/projects/*/*.user

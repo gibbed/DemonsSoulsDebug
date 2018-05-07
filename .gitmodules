@@ -1,0 +1,6 @@
+[submodule "tools/projects/Gibbed.IO"]
+	path = tools/projects/Gibbed.IO
+	url = https://github.com/gibbed/Gibbed.IO
+[submodule "tools/projects/NDesk.Options"]
+	path = tools/projects/NDesk.Options
+	url = https://github.com/gibbed/NDesk.Options
