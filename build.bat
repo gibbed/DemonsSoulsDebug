@@ -8,6 +8,9 @@ if not exist "%LLVM_PATH%\bin\ld.lld.exe" (
 if not exist "tools\bin\PatchElf.exe" (
   goto no_patchelf
 )
+if not exist "bin\boot.elf" (
+  goto no_boot
+)
 cd "bin" 2>NUL && cd .. || mkdir bin
 %LLVM_PATH%\bin\clang.exe -target ppc64-unknown-unknown -m64 -mllvm --x86-asm-syntax=intel -c debug_patch.S -o bin\debug_patch.o
 %LLVM_PATH%\bin\ld.lld.exe -v --section-start .text=0x10200 bin\debug_patch.o -o bin\debug_patch.elf
@@ -23,5 +26,11 @@ exit 0
 :no_patchelf
   echo Could not find tools\bin\PatchElf.exe.
   echo Please open tools\Tools.sln and compile the solution in Debug mode.
+  pause
+  exit 1
+
+:no_boot
+  echo Could not find bin\boot.elf.
+  echo Please copy the decrypted EBOOT to bin\boot.elf.
   pause
   exit 1
