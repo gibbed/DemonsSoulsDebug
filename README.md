@@ -14,7 +14,7 @@ Like what I've done? **[Consider supporting me on Patreon](http://patreon.com/gi
 * US retail copy of Demon's Souls.
 
 ## Instructions
-1. Open `Tools.bin` and build the entire solution with the Debug configuration.
+1. Open `tools\Tools.bin` and build the entire solution with the Debug configuration.
 1. Place a decrypted copy of Demon's Souls eboot.bin at `bin\boot.elf`.
     * You can get this easily by running Demon's Souls in RPCS3, it will then be found in `data\BLUS30443\(some ID)-EBOOT.BIN\boot.elf`.
 1. Run `build.bat`, if all goes well `bin\debug.elf` will be created.
