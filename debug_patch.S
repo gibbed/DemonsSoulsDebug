@@ -6,6 +6,11 @@
 # Redirect FS to FSDS0000 for easy modding on real PS3.
 #undef REDIRECT_FS
 
+# Disable system cache.
+# This is probably good for emulators (RPCS3).
+# This is probably BAD(!) on a real PS3 when loading from BDVD.
+#define DISABLE_SYSTEM_CACHE
+
 # Make lua's print() output to stdout
 #define LUA_PRINT_TO_STDOUT
 
@@ -53,6 +58,14 @@ patchend allocate_memory_coreres_2
 patch allocate_memory_coreres_3, 0x0003B4B0
   lis %r5, 0xE4
 patchend allocate_memory_coreres_3
+
+#endif
+
+#ifdef DISABLE_SYSTEM_CACHE
+
+patch load_use_system_cache_default_value, 0x0004A36C
+  clrldi %r4, %r21, 32
+patchend load_use_system_cache_default_value
 
 #endif
 
