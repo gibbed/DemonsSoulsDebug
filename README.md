@@ -17,10 +17,17 @@ Like what I've done? **[Consider supporting me on Patreon](http://patreon.com/gi
 
 ## Instructions
 
+### Obtain Decrypted Executable
+
+#### Obtain Decrypted Exectuable via RPCS3
+1. Run rpcs3.
+1. Click the `Utilities` menu, then the `Decrypt PS3 Binaries` menu item.
+1. Select `eboot.bin` from Demon's Souls directory and click open.
+1. rpcs3 will create an `eboot.elf` file next to `eboot.bin`, this is the decrypted file.
+
 ### Building From Release
 1. Download the [latest release](https://github.com/gibbed/DemonsSoulsDebug/releases/latest) (not the source ZIP!).
-1. Place a decrypted copy of Demon's Souls eboot.bin at `bin\boot.elf`.
-    * You can get this easily by running Demon's Souls in RPCS3, it will then be found in `data\BLUS30443\(some ID)-EBOOT.BIN\boot.elf`.
+1. Place a decrypted copy of Demon's Souls `eboot.bin` at `bin\boot.elf`.
 1. Run `build.bat`, if all goes well `bin\debug.elf` will be created.
 1. Run it on a real PS3 or otherwise.
     * Replace the original `EBOOT.BIN` with `debug.elf` in the game directory.
@@ -29,8 +36,7 @@ Like what I've done? **[Consider supporting me on Patreon](http://patreon.com/gi
 
 ### Building From Source
 1. Open `tools\Tools.bin` and build the entire solution with the Debug configuration.
-1. Place a decrypted copy of Demon's Souls eboot.bin at `bin\boot.elf`.
-    * You can get this easily by running Demon's Souls in RPCS3, it will then be found in `data\BLUS30443\(some ID)-EBOOT.BIN\boot.elf`.
+1. Place a decrypted copy of Demon's Souls `eboot.bin` at `bin\boot.elf`.
 1. Run `build.bat`, if all goes well `bin\debug.elf` will be created.
 1. Run it on a real PS3 or otherwise.
     * Replace the original `EBOOT.BIN` with `debug.elf` in the game directory.
