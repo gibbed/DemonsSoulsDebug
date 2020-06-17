@@ -27,12 +27,12 @@ build:
   verbosity: minimal
 
 before_build:
-  - clang.exe -target ppc64-unknown-unknown -m64 -mllvm --x86-asm-syntax=intel -c debug_patch.S -o bin\debug_patch.o
-  - ld.lld.exe -v --section-start .text=0x10200 bin\debug_patch.o -o bin\debug_patch.elf
+  - set "LLVM_PATH=C:\Program Files\LLVM"
+  - call build.bat
 
 after_build:
   - set TZ=GMT
   - git log . > git-log.txt
   - 7z a -r -tzip -mx=9 -x!*/LICENSE.txt DemonsSoulsDebug-%APPVEYOR_BUILD_VERSION%.zip bin/debug_patch.elf tools/bin/*.exe tools/bin/*.dll ./deploy/build.bat ./LICENSE.txt ./deploy/README.txt ./git-log.txt
 artifacts:
-  - path: '*-*.zip'
+  - path: '*.zip'

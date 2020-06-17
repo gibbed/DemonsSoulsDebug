@@ -7,12 +7,16 @@ if not exist "%LLVM_PATH%\bin\ld.lld.exe" (
   goto no_llvm
 )
 
+if not defined APPVEYOR (
+
 if not exist "tools\bin\PatchElf.exe" (
   goto no_patchelf
 )
 
 if not exist "bin\boot.elf" (
   goto no_boot
+)
+
 )
 
 cd "bin"   2>NUL && cd .. || mkdir "bin"
@@ -32,7 +36,9 @@ set "AS_FLAGS=-target ppc64-unknown-unknown -m64 -mllvm --x86-asm-syntax=intel"
 
 "%LLVM_PATH%\bin\ld.lld.exe" --script link.x --no-check-sections build/debug_menu.o build/debug_menu_localize.o build/disable_system_cache.o build/increase_memory_zones.o build/lua_print_to_stdout.o build/redirect_fs.o build/start.o build/symbols.o -o bin/debug_patch.elf
 
-tools\bin\PatchElf.exe bin\boot.elf bin\debug_patch.elf bin\debug.elf -v 83681f6110d33442329073b72b8dc88a2f677172 -a --dca=0x01842d48 --dcs=53944 --ocs=0x1832d48
+if not defined APPVEYOR (
+  tools\bin\PatchElf.exe bin\boot.elf bin\debug_patch.elf bin\debug.elf -v 83681f6110d33442329073b72b8dc88a2f677172 -a --dca=0x01842d48 --dcs=53944 --ocs=0x1832d48
+)
 
 exit /B 0
 
