@@ -168,38 +168,24 @@ namespace PatchElf
 
                 var patchElf = ElfHeader.Read(patchData);
 
-                var patchSectionIndex = Array.IndexOf(patchElf.SectionNames, ".patches");
-                if (patchSectionIndex < 0)
+                var patchListSectionIndex = Array.IndexOf(patchElf.SectionNames, ".patch_list");
+                if (patchListSectionIndex < 0)
                 {
-                    Console.WriteLine("No .patches section.");
+                    Console.WriteLine("No .patch_list section.");
                     return 7;
                 }
-                var patchSection = patchElf.SectionHeaders[patchSectionIndex];
+                var patchSection = patchElf.SectionHeaders[patchListSectionIndex];
                 var patchCount = patchSection.FileSize / 32;
-                var patchAddresses = new long[patchCount];
-                var patchSizes = new long[patchCount];
+                var patches = new PatchEntry[patchCount];
 
                 patchData.Position = patchSection.FileOffset;
                 for (int i = 0; i < patchSection.FileSize / 32; i++)
                 {
-                    var patchAddressSource = patchData.ReadValueS64(Endian.Big);
-                    var patchAddressStart = patchData.ReadValueS64(Endian.Big);
-                    var patchAddressEnd = patchData.ReadValueS64(Endian.Big);
-                    //var patchReserved = patchData.ReadValueS64(Endian.Big);
-                    patchData.Position += 8;
-
-                    if (patchAddressSource != patchAddressStart)
-                    {
-                        Console.WriteLine(
-                            "Patch #{0} has mismatching source and start ({1:X} vs {2:X})",
-                            i + 1,
-                            patchAddressSource,
-                            patchAddressStart);
-                        return 8;
-                    }
-
-                    patchAddresses[i] = patchAddressStart;
-                    patchSizes[i] = patchAddressEnd - patchAddressStart;
+                    var patchAddress = patchData.ReadValueS64(Endian.Big);
+                    var patchSize = patchData.ReadValueS64(Endian.Big);
+                    var patchSectionIndex = patchData.ReadValueS64(Endian.Big);
+                    var patchFlags = patchData.ReadValueS64(Endian.Big);
+                    patches[i] = new PatchEntry(patchAddress, patchSize, patchSectionIndex, (PatchFlags)patchFlags);
                 }
 
                 File.Copy(inputPath, outputPath, true);
@@ -256,20 +242,61 @@ namespace PatchElf
                         outputData.WriteValueS64(newCodeSize, Endian.Big);
                     }
 
-                    for (int i = 0; i < patchCount; i++)
+                    foreach (var patch in patches.OrderBy(p => p.Address))
                     {
-                        var inputOffset = patchElf.GetFileOffset((ulong)patchAddresses[i], (uint)patchSizes[i]);
+                        var sectionName = (patch.Flags & PatchFlags.IsCave) != 0
+                            ? ".cave"
+                            : (patch.Flags & PatchFlags.IsData) == 0
+                                ? $".text{patch.SectionIndex}"
+                                : $".data{patch.SectionIndex}";
+
+                        var sourceSectionIndex = Array.IndexOf(patchElf.SectionNames, sectionName);
+                        if (sourceSectionIndex < 0)
+                        {
+                            Console.WriteLine($"No {sectionName} section.");
+                            return 8;
+                        }
+
+                        var sourceSection = patchElf.SectionHeaders[sourceSectionIndex];
+
+                        var inputOffset = sourceSection.FileOffset + (long)((ulong)patch.Address - sourceSection.VirtualAddress);
                         patchData.Position = inputOffset;
 
-                        var outputOffset = inputElf.GetFileOffset((ulong)patchAddresses[i], (uint)patchSizes[i]);
+                        var outputOffset = inputElf.GetFileOffset((ulong)patch.Address, (uint)patch.Size);
                         outputData.Position = outputOffset;
 
-                        outputData.WriteFromStream(patchData, patchSizes[i]);
+                        //Console.WriteLine($"Patching {patch.Size} bytes at {outputOffset:X} from {patch.Address:X} ({sectionName})");
+
+                        outputData.WriteFromStream(patchData, patch.Size);
                     }
                 }
             }
 
             return 0;
+        }
+
+        private struct PatchEntry
+        {
+            public readonly long Address;
+            public readonly long Size;
+            public readonly long SectionIndex;
+            public readonly PatchFlags Flags;
+
+            public PatchEntry(long address, long size, long sectionIndex, PatchFlags flags)
+            {
+                this.Address = address;
+                this.Size = size;
+                this.SectionIndex = sectionIndex;
+                this.Flags = flags;
+            }
+        }
+
+        [Flags]
+        private enum PatchFlags
+        {
+            None = 0,
+            IsData = 1 << 0,
+            IsCave = 1 << 1,
         }
 
         private static void ParseValue(string v, out long? value)

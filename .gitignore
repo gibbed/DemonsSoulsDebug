@@ -1,7 +1,8 @@
 bin/eboot.bin
 bin/*.elf
-bin/*.o
+build/*.o
 tools/bin
+tools/.vs
 tools/*.suo
 tools/projects/*/bin
 tools/projects/*/obj
