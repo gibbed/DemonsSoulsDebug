@@ -14,9 +14,17 @@ patch_text_start call_create_debug_menu
   bl my_create_debug_menu
 patch_text_end call_create_debug_menu
 
+#endif
+
+#ifdef TITLE_DEBUG_MENU
+
 patch_text_start setup_title_menu
   bl init_debug_title_menu
 patch_text_end setup_title_menu
+
+#endif
+
+#ifdef DEBUG_MENU
 
 cave_start my_create_debug_menu
   stdu %r1, -16(%r1)

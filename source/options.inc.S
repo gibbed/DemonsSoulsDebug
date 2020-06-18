@@ -1,8 +1,11 @@
 #ifndef __OPTIONS_S
 #define __OPTIONS_S
 
-# Enable debug menu patches.
+# Enable runtime debug menu.
 #define DEBUG_MENU
+
+# Enable title debug menu.
+#define TITLE_DEBUG_MENU
 
 # Increase memory zones so Northern Limit files can load without crashing.
 #define INCREASE_MEMORY_ZONES
