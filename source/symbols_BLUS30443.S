@@ -26,13 +26,13 @@ target_text update_selected_node_keys,            0x00400190
 target_text advance_dbgmenuhgdraw_timer,          0x004008A0
 target_text update_dbgmenuhgdraw,                 0x00400F30
 target_text draw_dbgmenuhgdraw_box,               0x00401C60
+#target_text create_debug_menu_label,              0x00407518
+target_text create_debug_menu_label,              0x00406F08
+target_text fs_lua_print,                         0x00C02C78
+target_text luaB_print,                           0x00CA5230
 
 # .rdata
 
-#target_rdata create_debug_menu_label,              0x00407518
-target_rdata create_debug_menu_label,             0x00406F08
-target_rdata fs_lua_print,                        0x00C02C78
-target_rdata luaB_print,                          0x00CA5230
 target_rdata fsds_path,                           0x016BCBC0
 target_rdata model_viewer_label,                  0x016C7C00
 target_rdata map_select_label,                    0x016C7C30
