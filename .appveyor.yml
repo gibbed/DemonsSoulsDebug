@@ -9,6 +9,7 @@ skip_commits:
   files:
     - README.md
     - .github/*
+    - .gitattributes
 
 max_jobs: 1
 

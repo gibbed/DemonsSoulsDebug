@@ -1,0 +1,4 @@
+*.S linguist-language=Assembly
+*.inc linguist-language=Assembly
+tools/projects/Gibbed.IO/* linguist-vendored
+tools/projects/NDesk.Options/* linguist-vendored
