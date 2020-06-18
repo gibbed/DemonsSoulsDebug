@@ -8,7 +8,7 @@ Like what I've done? **[Consider supporting me on Patreon](http://patreon.com/gi
 
 ## What it achieves
 * Enables the title debug menu.
-* Enables the runtime debug menu (press start+select to toggle).
+* Enables the runtime debug menu (press Select to toggle).
 * Increases memory arena sizes so the Northern Limit area files can be loaded.
 
 ## Requires
