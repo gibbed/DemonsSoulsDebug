@@ -16,6 +16,7 @@ Like what I've done? **[Consider supporting me on Patreon](http://patreon.com/gi
 * A retail copy of Demon's Souls. The following releases are supported:
     * US 1.00 (`BLUS30443`)
     * JP 1.04 (`BCJS30022`)
+    * Asia v1.04 (`BCAS20071`)
     * Support for additional regional releases to come!
 
 ## Instructions
@@ -51,5 +52,4 @@ Like what I've done? **[Consider supporting me on Patreon](http://patreon.com/gi
 ## TODO
 * Build scripts for \*nix.
 * Porting patches to additional regional releases.
-    * Asia v1.04 (`BCAS20071`)
     * EU v1.00 (`BLES00932`)
