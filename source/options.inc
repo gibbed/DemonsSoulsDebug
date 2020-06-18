@@ -27,6 +27,6 @@
 
 # Load uncompressed files instead of the compressed (and encrypted) ones.
 # Based on Wulf2k's work.
-#define LOAD_UNCOMPRESSED_FILES
+#undef LOAD_UNCOMPRESSED_FILES
 
 #endif
