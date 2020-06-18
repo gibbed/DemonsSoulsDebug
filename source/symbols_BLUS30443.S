@@ -44,4 +44,8 @@ target_rdata title_sce_server_label,              0x016C7CF0
 # .data
 
 target_data my_delta_time_previous,               0x01852608  # padding re-used for delta time patch
+target_data game_alias_pointer,                   0x01853164
+target_data debug_alias_pointer,                  0x0185316C
+target_data capture_alias_pointer,                0x01853174
+target_data bdvd_path_pointer,                    0x019027F0
 target_data lua_print_pointer,                    0x0196E568
