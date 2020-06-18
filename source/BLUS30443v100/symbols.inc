@@ -1,4 +1,4 @@
-#include "helpers.inc.S"
+#include "../helpers.inc"
 
 # .text
 

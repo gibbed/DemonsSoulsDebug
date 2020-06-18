@@ -1,6 +1,7 @@
-bin/eboot.bin
-bin/*.elf
-build/*.o
+bin/**/eboot.bin
+bin/**/*.elf
+bin/**/*.patch
+build/**/*.o
 tools/bin
 tools/.vs
 tools/*.suo

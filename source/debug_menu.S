@@ -1,6 +1,6 @@
-#include "helpers.inc.S"
-#include "options.inc.S"
-#include "symbols.S"
+#include "helpers.inc"
+#include "options.inc"
+#include "symbols.inc"
 
 .set patch_section_index, 0
 

@@ -11,9 +11,13 @@ skip_commits:
 
 max_jobs: 1
 
-image: Visual Studio 2015
+image: Visual Studio 2019
 
 clone_folder: c:\projects\demonssoulsdebug
+
+environment:
+  LLVM_PATH: 'C:\Program Files\LLVM'
+  VCVARS_PATH: 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat'
 
 install:
   - git submodule update --init --recursive
@@ -26,13 +30,13 @@ build:
   parallel: true
   verbosity: minimal
 
-before_build:
-  - set "LLVM_PATH=C:\Program Files\LLVM"
-  - call build.bat
-
 after_build:
+  - '"%VCVARS_PATH%" x86'
+  - nmake /nologo /f Makefile.mak TARGET=USv100 bin\USv100\debug.elf.patch
+  - nmake /nologo /f Makefile.mak TARGET=JPv104 bin\JPv104\debug.elf.patch
   - set TZ=GMT
   - git log . > git-log.txt
-  - 7z a -r -tzip -mx=9 -x!*/LICENSE.txt DemonsSoulsDebug-%APPVEYOR_BUILD_VERSION%.zip bin/debug_patch.elf tools/bin/*.exe tools/bin/*.dll ./deploy/build.bat ./LICENSE.txt ./deploy/README.txt ./git-log.txt
+  - 7z a -r -tzip -mx=9 -x!*/LICENSE.txt DemonsSoulsDebug_USv100.zip ./bin/USv100/debug.elf.patch tools/bin/*.exe tools/bin/*.dll ./deploy/USv100/build.bat ./LICENSE.txt ./deploy/README.txt ./git-log.txt
+  - 7z a -r -tzip -mx=9 -x!*/LICENSE.txt DemonsSoulsDebug_JPv104.zip ./bin/JPv104/debug.elf.patch tools/bin/*.exe tools/bin/*.dll ./deploy/JPv104/build.bat ./LICENSE.txt ./deploy/README.txt ./git-log.txt
 artifacts:
   - path: '*.zip'

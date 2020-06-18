@@ -1,4 +1,5 @@
-#include "helpers.inc.S"
-#include "options.inc.S"
+#define MAKE_SYMBOLS
 
-#include "symbols_BLUS30443_v100.S"
+#include "helpers.inc"
+#include "options.inc"
+#include "symbols.inc"
