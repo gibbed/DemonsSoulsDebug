@@ -13,16 +13,16 @@ if not exist "tools\bin\PatchElf.exe" (
   goto no_patchelf
 )
 
-if not exist "bin\USv100\boot.elf" (
+if not exist "bin\Asia_v104\boot.elf" (
   goto no_boot
 )
 
 )
 
 if not defined APPVEYOR (
-  nmake /nologo /f Makefile.mak TARGET=USv100
+  nmake /nologo /f Makefile.mak TARGET=Asia_v104
 ) else (
-  nmake /nologo /f Makefile.mak TARGET=USv100 bin\USv100\debug.elf
+  nmake /nologo /f Makefile.mak TARGET=Asia_v104 bin\Asia_v104\debug.elf
 )
 
 exit /B 0
@@ -40,7 +40,7 @@ exit /B 0
   exit /B 1
 
 :no_boot
-  echo Could not find bin\USv100\boot.elf.
-  echo Please copy the decrypted EBOOT to bin\USv100\boot.elf.
+  echo Could not find bin\Asia_v104\boot.elf.
+  echo Please copy the decrypted EBOOT to bin\Asia_v104\boot.elf.
   pause
   exit /B 1

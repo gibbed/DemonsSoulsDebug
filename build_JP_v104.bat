@@ -13,16 +13,16 @@ if not exist "tools\bin\PatchElf.exe" (
   goto no_patchelf
 )
 
-if not exist "bin\JPv104\boot.elf" (
+if not exist "bin\JP_v104\boot.elf" (
   goto no_boot
 )
 
 )
 
 if not defined APPVEYOR (
-  nmake /nologo /f Makefile.mak TARGET=JPv104
+  nmake /nologo /f Makefile.mak TARGET=JP_v104
 ) else (
-  nmake /nologo /f Makefile.mak TARGET=JPv104 bin\JPv104\debug.elf
+  nmake /nologo /f Makefile.mak TARGET=JP_v104 bin\JP_v104\debug.elf
 )
 
 exit /B 0
@@ -40,7 +40,7 @@ exit /B 0
   exit /B 1
 
 :no_boot
-  echo Could not find bin\JPv104\boot.elf.
-  echo Please copy the decrypted EBOOT to bin\JPv104\boot.elf.
+  echo Could not find bin\JP_v104\boot.elf.
+  echo Please copy the decrypted EBOOT to bin\JP_v104\boot.elf.
   pause
   exit /B 1

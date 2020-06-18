@@ -41,9 +41,9 @@ Like what I've done? **[Consider supporting me on Patreon](http://patreon.com/gi
 ### Building From Source
 1. Open `tools\Tools.bin` and build the entire solution with the Debug configuration.
 1. Place a decrypted copy of Demon's Souls `eboot.bin` in the appropriate `bin` directory.
-    * For example, US 1.00 you would put it at `bin\USv100\boot.elf`.
+    * For example, US 1.00 you would put it at `bin\US_v100\boot.elf`.
 1. Run the build `.bat` for your release. If all goes well `debug.elf` will be created in the appropriate `bin` directory.
-    * For example, US 1.00 would be `build_USv100.bat`.
+    * For example, US 1.00 would be `build_US_v100.bat`.
 1. Run it on a real PS3 or otherwise.
     * Replace the original `EBOOT.BIN` with `debug.elf` in the game directory.
         * *Will probably require turning it into a SELF for running it on a real PS3.*

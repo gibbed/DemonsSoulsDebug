@@ -32,13 +32,13 @@ build:
 
 after_build:
   - '"%VCVARS_PATH%" x86'
-  - nmake /nologo /f Makefile.mak TARGET=USv100 bin\USv100\debug.elf.patch
-  - nmake /nologo /f Makefile.mak TARGET=JPv104 bin\JPv104\debug.elf.patch
-  - nmake /nologo /f Makefile.mak TARGET=Asiav104 bin\Asiav104\debug.elf.patch
+  - nmake /nologo /f Makefile.mak TARGET=US_v100 bin\US_v100\debug.elf.patch
+  - nmake /nologo /f Makefile.mak TARGET=JP_v104 bin\JP_v104\debug.elf.patch
+  - nmake /nologo /f Makefile.mak TARGET=Asia_v104 bin\Asia_v104\debug.elf.patch
   - set TZ=GMT
   - git log . > git-log.txt
-  - 7z a -r -tzip -mx=9 -x!*/LICENSE.txt DemonsSoulsDebug_USv100.zip ./bin/USv100/debug.elf.patch tools/bin/*.exe tools/bin/*.dll ./deploy/USv100/build.bat ./LICENSE.txt ./deploy/README.txt ./git-log.txt
-  - 7z a -r -tzip -mx=9 -x!*/LICENSE.txt DemonsSoulsDebug_JPv104.zip ./bin/JPv104/debug.elf.patch tools/bin/*.exe tools/bin/*.dll ./deploy/JPv104/build.bat ./LICENSE.txt ./deploy/README.txt ./git-log.txt
-  - 7z a -r -tzip -mx=9 -x!*/LICENSE.txt DemonsSoulsDebug_Asiav104.zip ./bin/Asiav104/debug.elf.patch tools/bin/*.exe tools/bin/*.dll ./deploy/Asiav104/build.bat ./LICENSE.txt ./deploy/README.txt ./git-log.txt
+  - 7z a -r -tzip -mx=9 -x!*/LICENSE.txt DemonsSoulsDebug_US_v100.zip ./bin/US_v100/debug.elf.patch tools/bin/*.exe tools/bin/*.dll ./deploy/US_v100/build.bat ./LICENSE.txt ./deploy/README.txt ./git-log.txt
+  - 7z a -r -tzip -mx=9 -x!*/LICENSE.txt DemonsSoulsDebug_JP_v104.zip ./bin/JP_v104/debug.elf.patch tools/bin/*.exe tools/bin/*.dll ./deploy/JP_v104/build.bat ./LICENSE.txt ./deploy/README.txt ./git-log.txt
+  - 7z a -r -tzip -mx=9 -x!*/LICENSE.txt DemonsSoulsDebug_Asia_v104.zip ./bin/Asia_v104/debug.elf.patch tools/bin/*.exe tools/bin/*.dll ./deploy/Asia_v104/build.bat ./LICENSE.txt ./deploy/README.txt ./git-log.txt
 artifacts:
   - path: '*.zip'
