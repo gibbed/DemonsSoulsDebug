@@ -2,7 +2,7 @@
 #include "options.inc.S"
 #include "symbols.S"
 
-.set patch_section_index, 6
+.set patch_section_index, 7
 
 #ifdef REDIRECT_FS
 

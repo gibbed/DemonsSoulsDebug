@@ -25,17 +25,28 @@ cd "build" 2>NUL && cd .. || mkdir "build"
 set "AS=%LLVM_PATH%\bin\clang.exe"
 set "AS_FLAGS=-target ppc64-unknown-unknown -m64 -mllvm --x86-asm-syntax=intel"
 
-"%AS%" %AS_FLAGS%                -c source/debug_menu.S            -o build/debug_menu.o
-"%AS%" %AS_FLAGS%                -c source/debug_menu_localize.S   -o build/debug_menu_localize.o
-"%AS%" %AS_FLAGS%                -c source/delta_time.S            -o build/delta_time.o
-"%AS%" %AS_FLAGS%                -c source/disable_system_cache.S  -o build/disable_system_cache.o
-"%AS%" %AS_FLAGS%                -c source/increase_memory_zones.S -o build/increase_memory_zones.o
-"%AS%" %AS_FLAGS%                -c source/lua_print_to_stdout.S   -o build/lua_print_to_stdout.o
-"%AS%" %AS_FLAGS%                -c source/redirect_fs.S           -o build/redirect_fs.o
-"%AS%" %AS_FLAGS%                -c source/start.S                 -o build/start.o
-"%AS%" %AS_FLAGS% -DMAKE_SYMBOLS -c source/symbols.S               -o build/symbols.o
+"%AS%" %AS_FLAGS%                -c source/debug_menu.S                      -o build/debug_menu.o
+"%AS%" %AS_FLAGS%                -c source/debug_menu_localize.S             -o build/debug_menu_localize.o
+"%AS%" %AS_FLAGS%                -c source/delta_time.S                      -o build/delta_time.o
+"%AS%" %AS_FLAGS%                -c source/disable_system_cache.S            -o build/disable_system_cache.o
+"%AS%" %AS_FLAGS%                -c source/increase_memory_zones.S           -o build/increase_memory_zones.o
+"%AS%" %AS_FLAGS%                -c source/load_uncompressed_files.S         -o build/load_uncompressed_files.o
+"%AS%" %AS_FLAGS%                -c source/lua_print_to_stdout.S             -o build/lua_print_to_stdout.o
+"%AS%" %AS_FLAGS%                -c source/redirect_fs.S                     -o build/redirect_fs.o
+"%AS%" %AS_FLAGS%                -c source/start.S                           -o build/start.o
+"%AS%" %AS_FLAGS% -DMAKE_SYMBOLS -c source/symbols.S                         -o build/symbols.o
 
-"%LLVM_PATH%\bin\ld.lld.exe" --script link.x --no-check-sections build/debug_menu.o build/debug_menu_localize.o build/delta_time.o build/disable_system_cache.o build/increase_memory_zones.o build/lua_print_to_stdout.o build/redirect_fs.o build/start.o build/symbols.o -o bin/debug_patch.elf
+"%LLVM_PATH%\bin\ld.lld.exe" --script link.x --no-check-sections -o bin/debug_patch.elf^
+ build/debug_menu.o^
+ build/debug_menu_localize.o^
+ build/delta_time.o^
+ build/disable_system_cache.o^
+ build/increase_memory_zones.o^
+ build/load_uncompressed_files.o^
+ build/lua_print_to_stdout.o^
+ build/redirect_fs.o^
+ build/start.o^
+ build/symbols.o
 
 if not defined APPVEYOR (
   tools\bin\PatchElf.exe bin\boot.elf bin\debug_patch.elf bin\debug.elf -v 83681f6110d33442329073b72b8dc88a2f677172 -a --dca=0x01842d48 --dcs=53944 --ocs=0x1832d48

@@ -28,6 +28,12 @@ target_text update_dbgmenuhgdraw,                 0x00400F30
 target_text draw_dbgmenuhgdraw_box,               0x00401C60
 #target_text create_debug_menu_label,              0x00407518
 target_text create_debug_menu_label,              0x00406F08
+target_text load_uncompressed_files_1,            0x0065B7FC
+target_text load_uncompressed_files_2,            0x0066AF08
+target_text load_uncompressed_files_3_target,     0x0066AF0C
+target_text load_uncompressed_files_3,            0x0066B024
+target_text load_uncompressed_files_4,            0x008DF878
+target_text load_uncompressed_files_4_target,     0x008EF168
 target_text fs_lua_print,                         0x00C02C78
 target_text luaB_print,                           0x00CA5230
 

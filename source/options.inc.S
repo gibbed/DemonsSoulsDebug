@@ -22,4 +22,8 @@
 # This is probably BAD(!) on a real PS3.
 #define DELTA_TIME
 
+# Load uncompressed files instead of the compressed (and encrypted) ones.
+# Based on Wulf2k's work.
+#undef LOAD_UNCOMPRESSED_FILES
+
 #endif
