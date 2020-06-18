@@ -4,7 +4,7 @@
 
 .set patch_section_index, 1
 
-#ifdef DEBUG_MENU
+#ifdef TITLE_DEBUG_MENU
 
 # Model Viewer
 patch_text_start model_viewer_label
