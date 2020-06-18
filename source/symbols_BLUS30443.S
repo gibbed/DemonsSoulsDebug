@@ -47,5 +47,6 @@ target_data my_delta_time_previous,               0x01852608  # padding re-used 
 target_data game_alias_pointer,                   0x01853164
 target_data debug_alias_pointer,                  0x0185316C
 target_data capture_alias_pointer,                0x01853174
+target_data sfx_test_label_pointer,               0x01857114
 target_data bdvd_path_pointer,                    0x019027F0
 target_data lua_print_pointer,                    0x0196E568

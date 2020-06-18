@@ -36,4 +36,13 @@ patch_text_start title_sce_server_label
   .short 'T','i','t','l','e',' ','(','S','C','E',' ','s','e','r','v','e','r',')',0
 patch_text_end title_sce_server_label
 
+# SFX Test
+cave_start sfx_test_label
+  .short 'S','F','X',' ','T','e','s','t',0
+cave_end sfx_test_label
+
+patch_data_start sfx_test_label_pointer
+  .long sfx_test_label
+patch_data_end sfx_test_label_pointer
+
 #endif
