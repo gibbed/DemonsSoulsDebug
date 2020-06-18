@@ -12,12 +12,12 @@ target_text initialize_flip_mode,                 0x00025ED8
 target_text allocate_memory_debug_1,              0x0003A1FC
 target_text allocate_memory_debug_2,              0x0003A244
 target_text allocate_memory_debug_3,              0x0003A2B0
-target_text allocate_memory_coreres,              0x0003B3FC
+target_text allocate_memory_coreres_1,            0x0003B3FC
 target_text allocate_memory_coreres_2,            0x0003B444
 target_text allocate_memory_coreres_3,            0x0003B4B0
 target_text load_use_system_cache_default_value,  0x0004A36C
 target_text init_debug_title_menu,                0x0015C878
-target_text setup_title_menu,                     0x0016F444
+target_text call_init_title_menu,                 0x0016F444
 target_text init_title_menu,                      0x0018B7D0
 target_text get_pad,                              0x001C4AE0
 target_text disable_pad,                          0x001C6760

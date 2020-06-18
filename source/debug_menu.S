@@ -18,9 +18,9 @@ patch_text_end call_create_debug_menu
 
 #ifdef TITLE_DEBUG_MENU
 
-patch_text_start setup_title_menu
+patch_text_start call_init_title_menu
   bl init_debug_title_menu
-patch_text_end setup_title_menu
+patch_text_end call_init_title_menu
 
 #endif
 

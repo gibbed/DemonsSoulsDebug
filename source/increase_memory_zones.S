@@ -18,9 +18,9 @@ patch_text_start allocate_memory_debug_3
   lis %r5, 0x80
 patch_text_end allocate_memory_debug_3
 
-patch_text_start allocate_memory_coreres
+patch_text_start allocate_memory_coreres_1
   lis %r3, 0xE4
-patch_text_end allocate_memory_coreres
+patch_text_end allocate_memory_coreres_1
 
 patch_text_start allocate_memory_coreres_2
   lis %r5, 0xE4
