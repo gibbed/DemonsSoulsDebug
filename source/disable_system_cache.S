@@ -2,7 +2,7 @@
 #include "options.inc.S"
 #include "symbols.S"
 
-.set patch_section_index, 2
+.set patch_section_index, 3
 
 #ifdef DISABLE_SYSTEM_CACHE
 

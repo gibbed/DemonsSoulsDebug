@@ -2,7 +2,7 @@
 #include "options.inc.S"
 #include "symbols.S"
 
-.set patch_section_index, 4
+.set patch_section_index, 5
 
 #ifdef LUA_PRINT_TO_STDOUT
 

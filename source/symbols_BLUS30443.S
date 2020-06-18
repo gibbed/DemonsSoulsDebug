@@ -4,9 +4,11 @@
 
 target_text get_debug_menu_root,                  0x00015328
 target_text create_debug_menu,                    0x00015A58
+target_text call_delta_time,                      0x0001B95C
 target_text call_render_debug_menu,               0x0001BB38
 target_text call_create_debug_menu,               0x00020F44
 target_text get_hg_man_instance,                  0x00023878
+target_text initialize_flip_mode,                 0x00025ED8
 target_text allocate_memory_debug_1,              0x0003A1FC
 target_text allocate_memory_debug_2,              0x0003A244
 target_text allocate_memory_debug_3,              0x0003A2B0
@@ -41,4 +43,5 @@ target_rdata title_sce_server_label,              0x016C7CF0
 
 # .data
 
+target_data my_delta_time_previous,               0x01852608  # padding re-used for delta time patch
 target_data lua_print_pointer,                    0x0196E568

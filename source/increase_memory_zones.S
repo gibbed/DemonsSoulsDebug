@@ -2,7 +2,7 @@
 #include "options.inc.S"
 #include "symbols.S"
 
-.set patch_section_index, 3
+.set patch_section_index, 4
 
 #ifdef INCREASE_MEMORY_ZONES
 

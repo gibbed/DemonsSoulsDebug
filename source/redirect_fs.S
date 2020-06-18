@@ -1,7 +1,7 @@
 #include "helpers.inc.S"
 #include "options.inc.S"
 
-.set patch_section_index, 5
+.set patch_section_index, 6
 
 #ifdef REDIRECT_FS
 

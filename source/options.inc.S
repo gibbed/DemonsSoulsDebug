@@ -18,4 +18,8 @@
 # Make lua's print() output to stdout
 #define LUA_PRINT_TO_STDOUT
 
+# Enable Whatcookie's delta time patch.
+# This is probably BAD(!) on a real PS3.
+#define DELTA_TIME
+
 #endif
