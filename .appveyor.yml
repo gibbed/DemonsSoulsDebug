@@ -23,6 +23,7 @@ environment:
 
 install:
   - git submodule update --init --recursive
+  - nuget restore tools\Tools.sln
 
 configuration:
   - Debug
