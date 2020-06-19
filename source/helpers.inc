@@ -1,6 +1,11 @@
 #ifndef __HELPERS_S
 #define __HELPERS_S
 
+#define CONCAT_NX(A, B) A ## B
+#define CONCAT(A, B) CONCAT_NX(A, B)
+#define STRINGIZE_NX(S) #S
+#define STRINGIZE(S) STRINGIZE_NX(S)
+
 .macro cave_start name
   .section ".cave","ax"
   .align 4
@@ -17,6 +22,11 @@
   .quad cave_\name, cave_end_\name-cave_\name, patch_section_index, 2
 .endm
 
+#define CAVE_STRING(name) \
+cave_start name; \
+  .incbin STRINGIZE(CONCAT(CONCAT(source/strings/bin/, name), .u16bin)); \
+cave_end name
+
 .macro patch_text_start name
   .text
   .org patch_target_\name-0x10200
@@ -30,6 +40,11 @@
   patch_entry_\name:
   .quad patch_text_\name, patch_text_end_\name-patch_text_\name, patch_section_index, 0
 .endm
+
+#define PATCH_TEXT_STRING(name) \
+patch_text_start name; \
+  .incbin STRINGIZE(CONCAT(CONCAT(source/strings/bin/, name), .u16bin)); \
+patch_text_end name
 
 .macro patch_data_start name
   .data

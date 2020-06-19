@@ -34,12 +34,24 @@ CAVE_SIZE=48440
 
 BIN_DIR=bin\$(TARGET)
 BUILD_DIR=build\$(TARGET_DIR)
+STRING_BIN_DIR=source\strings\bin
 
 AS=$(LLVM_PATH)\bin\clang.exe
 LD=$(LLVM_PATH)\bin\ld.lld.exe
 
 AS_FLAGS=-target ppc64-unknown-unknown -m64 -mllvm --x86-asm-syntax=intel -DTARGET=$(TARGET_ID)
 LD_FLAGS=-script "source\$(TARGET_DIR)\link.x" --no-check-sections
+
+STRINGS=\
+ $(STRING_BIN_DIR)\facegen_test_label.u16bin\
+ $(STRING_BIN_DIR)\map_select_label.u16bin\
+ $(STRING_BIN_DIR)\model_viewer_label.u16bin\
+ $(STRING_BIN_DIR)\my_game_path_app_home.u16bin\
+ $(STRING_BIN_DIR)\my_game_path_fsds.u16bin\
+ $(STRING_BIN_DIR)\sfx_test_label.u16bin\
+ $(STRING_BIN_DIR)\title_fs_debug_server_label.u16bin\
+ $(STRING_BIN_DIR)\title_list_label.u16bin\
+ $(STRING_BIN_DIR)\title_sce_server_label.u16bin
 
 OBJECTS=\
  $(BUILD_DIR)\debug_menu.o\
@@ -53,7 +65,7 @@ OBJECTS=\
  $(BUILD_DIR)\start.o\
  $(BUILD_DIR)\symbols.o
 
-.SUFFIXES : .s .o
+.SUFFIXES : .s .o .txt .u16bin
 
 all: $(BIN_DIR)\debug.elf
 
@@ -61,10 +73,14 @@ all: $(BIN_DIR)\debug.elf
   @echo Assembling $<
   @"$(AS)" $(AS_FLAGS) -c $< -o $@
 
-$(BIN_DIR) $(BUILD_DIR):
+{source\strings}.txt{source\strings\bin}.u16bin:
+  @echo Converting $<
+  @"tools\bin\MakeStringBin.exe" "$<" "$@"
+
+$(BIN_DIR) $(BUILD_DIR) source\strings\bin:
   @MD $@
 
-$(BIN_DIR)\debug.elf.patch: $(BIN_DIR) $(BUILD_DIR) $(OBJECTS)
+$(BIN_DIR)\debug.elf.patch: $(BIN_DIR) $(BUILD_DIR) source\strings\bin $(STRINGS) $(OBJECTS)
   @echo Linking $@
   @"$(LD)" $(LD_FLAGS) -o $@ $(OBJECTS:\=/)
 

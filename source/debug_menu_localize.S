@@ -6,40 +6,14 @@
 
 #ifdef TITLE_DEBUG_MENU
 
-# Model Viewer
-patch_text_start model_viewer_label
-  .short 'M','o','d','e','l',' ','V','i','e','w','e','r',0
-patch_text_end model_viewer_label
+PATCH_TEXT_STRING(model_viewer_label)          # Model Viewer
+PATCH_TEXT_STRING(map_select_label)            # Map Select
+PATCH_TEXT_STRING(facegen_test_label)          # FaceGen Test
+PATCH_TEXT_STRING(title_list_label)            # Title List
+PATCH_TEXT_STRING(title_fs_debug_server_label) # Title (FS debug server)
+PATCH_TEXT_STRING(title_sce_server_label)      # Title (SCE server)
 
-# Map Select
-patch_text_start map_select_label
-  .short 'M','a','p',' ','S','e','l','e','c','t',0
-patch_text_end map_select_label
-
-# FaceGen Test
-patch_text_start facegen_test_label
-  .short 'F','a','c','e','G','e','n',' ','T','e','s','t',0
-patch_text_end facegen_test_label
-
-# Title List
-patch_text_start title_list_label
-  .short 'T','i','t','l','e',' ','L','i','s','t',0
-patch_text_end title_list_label
-
-# Title (FS debug server)
-patch_text_start title_fs_debug_server_label
-  .short 'T','i','t','l','e',' ','(','F','S',' ','d','e','b','u','g',' ','s','e','r','v','e','r',')',0
-patch_text_end title_fs_debug_server_label
-
-# Title (SCE server)
-patch_text_start title_sce_server_label
-  .short 'T','i','t','l','e',' ','(','S','C','E',' ','s','e','r','v','e','r',')',0
-patch_text_end title_sce_server_label
-
-# SFX Test
-cave_start sfx_test_label
-  .short 'S','F','X',' ','T','e','s','t',0
-cave_end sfx_test_label
+CAVE_STRING(sfx_test_label)                    # SFX Test
 
 patch_data_start sfx_test_label_pointer
   .long sfx_test_label
