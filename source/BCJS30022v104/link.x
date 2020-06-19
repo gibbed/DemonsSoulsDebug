@@ -10,7 +10,7 @@ SECTIONS
     .text4 { build/BCJS30022v104/increase_memory_zones.o(.text) } : code_seg
     .text5 { build/BCJS30022v104/load_uncompressed_files.o(.text) } : code_seg
     .text6 { build/BCJS30022v104/lua_print_to_stdout.o(.text) } : code_seg
-    .text7 { build/BCJS30022v104/redirect_fs.o(.text) } : code_seg
+    .text7 { build/BCJS30022v104/redirect_filesystem.o(.text) } : code_seg
     .text8 { build/BCJS30022v104/symbols.o(.text) } : code_seg
   }
 
@@ -27,7 +27,7 @@ SECTIONS
     .data4 { build/BCJS30022v104/increase_memory_zones.o(.data) } : data_seg
     .data5 { build/BCJS30022v104/load_uncompressed_files.o(.data) } : data_seg
     .data6 { build/BCJS30022v104/lua_print_to_stdout.o(.data) } : data_seg
-    .data7 { build/BCJS30022v104/redirect_fs.o(.data) } : data_seg
+    .data7 { build/BCJS30022v104/redirect_filesystem.o(.data) } : data_seg
     .data8 { build/BCJS30022v104/symbols.o(.data) } : data_seg
   }
 

@@ -10,8 +10,11 @@
 # Increase memory zones so Northern Limit files can load without crashing.
 #define INCREASE_MEMORY_ZONES
 
-# Redirect FS to FSDS0000 for easy modding on real PS3.
-#undef REDIRECT_FS
+# Redirect filesystem access to /dev_hdd0/game/FSDS0000/USRDIR for easy modding on real PS3.
+#undef REDIRECT_FILESYSTEM_FSDS
+
+# Redirect filesystem access to /app_home/PS3_GAME/USRDIR for easy modding on a real PS3.
+#undef REDIRECT_FILESYSTEM_APP_HOME
 
 # Disable system cache.
 # This is probably good for emulators (RPCS3).

@@ -10,7 +10,7 @@ SECTIONS
     .text4 { build/BLUS30443v100/increase_memory_zones.o(.text) } : code_seg
     .text5 { build/BLUS30443v100/load_uncompressed_files.o(.text) } : code_seg
     .text6 { build/BLUS30443v100/lua_print_to_stdout.o(.text) } : code_seg
-    .text7 { build/BLUS30443v100/redirect_fs.o(.text) } : code_seg
+    .text7 { build/BLUS30443v100/redirect_filesystem.o(.text) } : code_seg
     .text8 { build/BLUS30443v100/symbols.o(.text) } : code_seg
   }
 
@@ -27,7 +27,7 @@ SECTIONS
     .data4 { build/BLUS30443v100/increase_memory_zones.o(.data) } : data_seg
     .data5 { build/BLUS30443v100/load_uncompressed_files.o(.data) } : data_seg
     .data6 { build/BLUS30443v100/lua_print_to_stdout.o(.data) } : data_seg
-    .data7 { build/BLUS30443v100/redirect_fs.o(.data) } : data_seg
+    .data7 { build/BLUS30443v100/redirect_filesystem.o(.data) } : data_seg
     .data8 { build/BLUS30443v100/symbols.o(.data) } : data_seg
   }
 

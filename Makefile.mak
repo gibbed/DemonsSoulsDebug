@@ -49,7 +49,7 @@ OBJECTS=\
  $(BUILD_DIR)\increase_memory_zones.o\
  $(BUILD_DIR)\load_uncompressed_files.o\
  $(BUILD_DIR)\lua_print_to_stdout.o\
- $(BUILD_DIR)\redirect_fs.o\
+ $(BUILD_DIR)\redirect_filesystem.o\
  $(BUILD_DIR)\start.o\
  $(BUILD_DIR)\symbols.o
 
