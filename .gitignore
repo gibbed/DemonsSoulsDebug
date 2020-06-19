@@ -1,10 +1,5 @@
+bin/**/*.7z
 bin/**/eboot.bin
 bin/**/*.elf
 bin/**/*.patch
 build/**/*.o
-tools/bin
-tools/.vs
-tools/*.suo
-tools/projects/*/bin
-tools/projects/*/obj
-tools/projects/*/*.user

@@ -1,6 +1,8 @@
 [submodule "tools/projects/Gibbed.IO"]
 	path = tools/projects/Gibbed.IO
-	url = https://github.com/gibbed/Gibbed.IO
+	url = https://github.com/gibbed/Gibbed.IO.git
+	branch = vs2017
 [submodule "tools/projects/NDesk.Options"]
 	path = tools/projects/NDesk.Options
-	url = https://github.com/gibbed/NDesk.Options
+	url = https://github.com/gibbed/NDesk.Options.git
+	branch = vs2017
