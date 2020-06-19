@@ -40,8 +40,8 @@ after_build:
   - nmake /nologo /f Makefile.mak TARGET=Asia_v104 bin\Asia_v104\debug.elf.patch
   - set TZ=GMT
   - git log . > git-log.txt
-  - 7z a -r -tzip -mx=9 -x!*/LICENSE.txt DemonsSoulsDebug_US_v100.zip ./bin/US_v100/debug.elf.patch tools/bin/*.exe tools/bin/*.dll ./deploy/US_v100/build.bat ./LICENSE.txt ./deploy/README.txt ./git-log.txt
-  - 7z a -r -tzip -mx=9 -x!*/LICENSE.txt DemonsSoulsDebug_JP_v104.zip ./bin/JP_v104/debug.elf.patch tools/bin/*.exe tools/bin/*.dll ./deploy/JP_v104/build.bat ./LICENSE.txt ./deploy/README.txt ./git-log.txt
-  - 7z a -r -tzip -mx=9 -x!*/LICENSE.txt DemonsSoulsDebug_Asia_v104.zip ./bin/Asia_v104/debug.elf.patch tools/bin/*.exe tools/bin/*.dll ./deploy/Asia_v104/build.bat ./LICENSE.txt ./deploy/README.txt ./git-log.txt
+  - 7z a -r -tzip -mx=9 -x!*/LICENSE.txt DemonsSoulsDebug_US_v100.zip     ./bin/US_v100/debug.elf.patch tools/bin/PatchElf.exe tools/bin/*.dll   ./deploy/US_v100/build.bat ./LICENSE.txt ./deploy/README.txt ./git-log.txt
+  - 7z a -r -tzip -mx=9 -x!*/LICENSE.txt DemonsSoulsDebug_JP_v104.zip     ./bin/JP_v104/debug.elf.patch tools/bin/PatchElf.exe tools/bin/*.dll   ./deploy/JP_v104/build.bat ./LICENSE.txt ./deploy/README.txt ./git-log.txt
+  - 7z a -r -tzip -mx=9 -x!*/LICENSE.txt DemonsSoulsDebug_Asia_v104.zip ./bin/Asia_v104/debug.elf.patch tools/bin/PatchElf.exe tools/bin/*.dll ./deploy/Asia_v104/build.bat ./LICENSE.txt ./deploy/README.txt ./git-log.txt
 artifacts:
   - path: '*.zip'
