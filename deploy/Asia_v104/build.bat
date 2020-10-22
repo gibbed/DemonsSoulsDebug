@@ -8,7 +8,7 @@ if not exist "debug.elf.patch" (
 if not exist "boot.elf" (
   goto no_boot
 )
-tools\bin\PatchElf.exe boot.elf debug.patch.elf debug.elf -v 9403fe1678487def5d7f3c380b4c4fb275035378 -a --dca=0x018442c8 --dcs=48440 --ocs=0x018342c8
+tools\bin\PatchElf.exe boot.elf debug.elf.patch debug.elf -v 9403fe1678487def5d7f3c380b4c4fb275035378 -a --dca=0x018442c8 --dcs=48440 --ocs=0x018342c8
 exit /B 0
 
 :missing_files
