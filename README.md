@@ -31,9 +31,10 @@ Like what I've done? **[Consider supporting me on Patreon](http://patreon.com/gi
 
 ### Building From Release
 1. Download the [latest release](https://github.com/gibbed/DemonsSoulsDebug/releases/latest) for your release (not the source ZIP!).
-1. Place a decrypted copy of Demon's Souls `eboot.bin` at `boot.elf`.
-1. Run `build.bat`, if all goes well `debug.elf` will be created.
-1. Run it on a real PS3 or otherwise.
+2. Unpack the zip in a new directory anywhere.
+3. Place a decrypted copy of Demon's Souls `eboot.bin` as `boot.elf` in the unpacked directory alongside `build.bat`.
+4. Run `build.bat`, if all goes well `debug.elf` will be created.
+5. Run it on a real PS3 or otherwise.
     * Replace the original `EBOOT.BIN` with `debug.elf` in the game directory.
         * *Will probably require turning it into a SELF for running it on a real PS3.*
     * Or just place it alongside `EBOOT.BIN`.
